@@ -1,4 +1,4 @@
-module github.com/gnieto/mulint
+module github.com/tigergraph/mulint
 
 go 1.14
 
