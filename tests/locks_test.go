@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/gnieto/mulint/mulint"
+	"github.com/tigergraph/mulint/mulint"
 	"golang.org/x/tools/go/analysis/analysistest"
 )
 
