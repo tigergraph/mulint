@@ -4,7 +4,6 @@ import (
 	"go/ast"
 	"go/token"
 
-	"github.com/securego/gosec"
 	"golang.org/x/tools/go/analysis"
 )
 
@@ -74,11 +73,7 @@ func (a *Analyzer) ContainsLock(n ast.Node, seq *MutexScope) {
 }
 
 func (a *Analyzer) checkCallToFuncWhichLocksSameMutex(seq *MutexScope, callExpr *ast.CallExpr) {
-	ctx := &gosec.Context{
-		Pkg:  a.pass.Pkg,
-		Info: a.pass.TypesInfo,
-	}
-	pkg, name, err := gosec.GetCallInfo(callExpr, ctx)
+	pkg, name, err := getCallInfo(callExpr, a.pass.Pkg, a.pass.TypesInfo)
 
 	if err == nil {
 		fqn := FromCallInfo(pkg, name)
